@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Todo from "./apps/todo-app/Todo";
+import PomodoroApp from "./apps/pomodoro-timer-app/PomodoroApp";
+import CoinExchange from "./apps/coin-exchange-app/CoinExchange";
+import Notes from "./apps/notes-app/Notes";
+import Animation from "./apps/animation-app/Animation";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { notes1, notes2 } from "./apps/notes-app/data";
+
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      notes: notes1,
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ notes: notes2 });
+    }, 10000);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Animation />
+      </div>
+    );
+  }
 }
-
 export default App;
